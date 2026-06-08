@@ -1,0 +1,94 @@
+PIPELINE QUẢN LÝ MẬT KHẨU (ATTT)
+Pipeline – Password Manager
+
+Luồng tổng quát
+Mở App
+↓
+Chưa có tài khoản?
+↓ Có              ↓ Chưa
+Đăng nhập        Đăng ký
+↓                  ↓
+Nhập Master Password
+↓
+Xác thực và sinh khóa AES bằng Argon2
+↓
+Giải mã vault.json bằng AES-256-GCM
+↓
+Vào màn hình chính
+↓
+
+Thêm │ Xem │ Xóa │ Tạo MK │
+
+Chi tiết từng chức năng
+Thêm mật khẩu
+Nhập: Tên, Tài khoản, Mật khẩu
+→ Mã hóa bằng AES-256-GCM
+→ Lưu vào vault.json
+Xem mật khẩu
+Chọn mục cần xem
+→ Giải mã AES-256-GCM
+→ Hiện lên màn hình
+→ Copy → Clipboard tự xóa sau 30 giây
+Tạo mật khẩu mạnh
+Chọn độ dài + loại ký tự
+→ Sinh ngẫu nhiên bằng secrets
+→ Hiện lên màn hình để dùng
+Xóa mật khẩu
+Chọn mục cần xóa
+→ Xác nhận
+→ Xóa khỏi vault.json
+
+Xác định yêu cầu
+App cần làm gì?
+Chức năng 1: Đăng ký / Đăng nhập
+
+Lần đầu mở app → tạo Master Password
+Lần sau → nhập Master Password để vào
+Nhập sai → không cho vào
+
+Chức năng 2: Thêm mật khẩu
+
+Nhập tên (Facebook, Gmail,...)
+Nhập tài khoản (email/username)
+Nhập mật khẩu
+Lưu lại dạng mã hóa
+
+Chức năng 3: Xem mật khẩu
+
+Hiện danh sách đã lưu
+Click vào xem chi tiết
+Có nút ẩn/hiện mật khẩu
+Có nút copy → tự xóa sau 30 giây
+
+Chức năng 4: Xóa mật khẩu
+
+Chọn mục muốn xóa
+Xác nhận trước khi xóa
+Xóa khỏi vault.json
+
+Chức năng 5: Tạo mật khẩu mạnh
+
+Chọn độ dài
+Chọn loại ký tự
+Sinh ngẫu nhiên
+Copy dùng liền
+
+Không kết nối internet
+Không tự động điền vào trình duyệt
+Không cần tài khoản thật để test
+
+Công nghệ
+Ngôn ngữ: Python 3.10+
+Giao diện: CustomTkinter
+Mã hóa dữ liệu: AES-256-GCM
+Hash password & Derive key: Argon2
+Lưu trữ: vault.json
+Tạo mật khẩu: secrets
+Hạn chế lộ lọt mật khẩu: Tkinter show="*" + clipboard auto-clear
+
+4 màn hình giao diện cần phải có:
+Màn hình Mô tả
+Màn hình 1 Đăng ký / Đăng nhập
+Màn hình 2 Danh sách mật khẩu (màn hình chính)
+Màn hình 3 Thêm mật khẩu mới
+Màn hình 4 Tạo mật khẩu mạnh
