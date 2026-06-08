@@ -3,6 +3,6 @@
 Lưu trữ mật khẩu mã hóa, tích hợp tính năng tạo mật khẩu mạnh và 
 chống keylogger.
 # Các thành viên
-Nguyễn Lâm Khoi
-Phạm Phước
-Nguyễn Anh Khoa
+Nguyễn Lâm Khoi | 
+Phạm Phước | 
+Nguyễn Anh Khoa | 
